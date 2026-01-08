@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: ss_shot_be
+
+  profiles:
+    active: local
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+# JWT Configuration
+jwt:
+  access-token-expiration: 3600000      # 1시간 (ms)
+  refresh-token-expiration: 604800000   # 7일 (ms)
+
+# Swagger/OpenAPI
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method

@@ -1,0 +1,15 @@
+package com.ss_shot.ss_shot_be.dto.request;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class RefreshTokenRequest {
+
+    @NotBlank(message = "Refresh token is required")
+    private String refreshToken;
+}

@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ss_shot_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ss_shot_db
+      POSTGRES_USER: ss_shot_user
+      POSTGRES_PASSWORD: ss_shot_password
+      TZ: Asia/Seoul
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ss_shot_user -d ss_shot_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
